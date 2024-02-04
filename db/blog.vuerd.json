@@ -44,7 +44,7 @@
     "tables": [
       {
         "name": "post",
-        "comment": "블로그 게시물",
+        "comment": "게시물 및 댓글",
         "columns": [
           {
             "name": "id",
@@ -212,9 +212,9 @@
           "active": false,
           "left": 31.4077,
           "top": 27.3328,
-          "zIndex": 1,
+          "zIndex": 10,
           "widthName": 60,
-          "widthComment": 83.376953125
+          "widthComment": 86.75390625
         },
         "visible": true,
         "id": "495427a8-db2b-4894-aa87-1b747056a1e6"
