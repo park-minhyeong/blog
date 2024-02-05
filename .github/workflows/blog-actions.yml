@@ -27,4 +27,8 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/blog-actions:latest
 
       - name: Deploy to NCP
-        run: ssh -o StrictHostKeyChecking=no -i ${{ secrets.NCP_SSH_KEY }} ${{ secrets.NCP_SSH_USER }}@${{ secrets.NCP_SSH_HOST }} 'docker pull ${{ secrets.DOCKER_USERNAME }}/blog-actions:latest && docker-compose -f /home/docker/docker-compose.yml up -d'
+        run: |
+          echo "${{ secrets.NCP_SSH_KEY }}" > _temp_key
+          chmod 600 _temp_key
+          ssh -o StrictHostKeyChecking=no -i _temp_key ${{ secrets.NCP_SSH_USER }}@${{ secrets.NCP_SSH_HOST }} 'docker pull ${{ secrets.DOCKER_USERNAME }}/blog-actions:latest && docker-compose -f /home/docker/docker-compose.yml up -d'
+          rm _temp_key
