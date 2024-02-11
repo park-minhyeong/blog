@@ -26,6 +26,13 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/blog-actions:latest
 
+      - name: Upload docker-compose.yml to NCP
+        run: |
+          echo "${{ secrets.NCP_SSH_KEY }}" > _temp_key
+          chmod 600 _temp_key
+          scp -o StrictHostKeyChecking=no -P 20002 -i _temp_key docker-compose.yml ${{ secrets.NCP_SSH_USER }}@${{ secrets.NCP_SSH_HOST }}:/home/docker/docker-compose.yml
+          rm _temp_key
+
       - name: Deploy to NCP
         run: |
           echo "${{ secrets.NCP_SSH_KEY }}" > _temp_key
