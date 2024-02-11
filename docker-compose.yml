@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     ports:
       - "3001:3001"
     volumes:
