@@ -3,11 +3,11 @@ services:
   app:
     build:
       context: .
-      dockerfile: /Dockerfile
+      dockerfile: Dockerfile  # Dockerfile이 루트에 위치
     ports:
       - "3001:3001"
     volumes:
       - .:/app
-      - /node_modules
+      # - /app/node_modules  # 이 설정은 필요 없을 수 있음
     environment:
       NODE_ENV: production
