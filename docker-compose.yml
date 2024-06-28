@@ -3,11 +3,11 @@ services:
   app:
     build:
       context: .
-      dockerfile: /app/Dockerfile
+      dockerfile: /Dockerfile
     ports:
       - "3001:3001"
     volumes:
       - .:/app
-      - /app/node_modules
+      - /node_modules
     environment:
       NODE_ENV: production
